@@ -1,19 +1,18 @@
 #include "incl.h"
 extern void inst();
-extern void instr(string str);
-extern void inrules();
+extern string s(string &str);
 
 int main() {
+  inst();
   string str;
-  struct rls {
-    char fp;
+  struct st {
+    string fp;
     char es;
     char ns;
     char mv;
-    char np;
+    string np;
   };
-  inst();
-  instr(str);
-  inrules();
+  st rules[100];
+  s(str);
   return 0;
 }
