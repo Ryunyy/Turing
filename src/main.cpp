@@ -3,7 +3,7 @@
 extern void inst();
 extern string s(string &str);
 extern int r(vector<struct st> &rls, int N);
-extern void string_processing(string &str);
+extern void string_processing(string &str, vector<struct st> &rls);
 
 int main() {
   inst();
