@@ -1,2 +1,5 @@
 *.d
 *.exe
+.vscode
+bin
+build
