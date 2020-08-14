@@ -1,6 +1,7 @@
 #include "incl.h"
 
 extern string replacement(vector<st> &rls, string &str, int i, int point);
+extern int move(int point, vector<st> &rls, int i);
 
 void string_processing(string &str, vector<st> &rls)
  {
@@ -9,9 +10,13 @@ void string_processing(string &str, vector<st> &rls)
     while(current_state != "halt"){
         if(current_state == rls[i].fp && str[point] == rls[i].es) {
             cout << replacement(rls, str, i, point) << endl;
+            point = move(point, rls, i);
+            current_state = rls[i].np;
+            i = 0;
         }
         else {
             i++;
         }
     }
+    return;
  }
