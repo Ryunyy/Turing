@@ -6,7 +6,7 @@ s = src
 
 all: clean1 folders $(bi)/main
 
-$(bi)/main: $(bu)/main.o $(bu)/inst.o $(bu)/s.o
+$(bi)/main: $(bu)/main.o $(bu)/inst.o $(bu)/s.o $(bu)/string_processing.o
 	$(flags) $^ -o $@
 
 $(bu)/main.o: $(s)/main.cpp $(s)/incl.h
@@ -16,6 +16,9 @@ $(bu)/inst.o: $(s)/inst.cpp $(s)/incl.h
 	$(flags) -c $< -o $@
 
 $(bu)/s.o: $(s)/s.cpp $(s)/incl.h
+	$(flags) -c $< -o $@
+
+$(bu)/string_processing.o: $(s)/string_processing.cpp $(s)/incl.h
 	$(flags) -c $< -o $@
 
 folders:
