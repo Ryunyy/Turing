@@ -1,9 +1,8 @@
 #include "incl.h"
-#include "st.h"
 extern void inst();
 extern string s(string &str);
 extern int r(vector<struct st> &rls, int N);
-extern void string_processing(string &str);
+extern void string_processing(string &str, vector<st> &rls);
 
 int main() {
   inst();
@@ -11,10 +10,7 @@ int main() {
   vector<struct st> rls(100);
   s(str);
   cout << "Ваша строка:   " << str;
-  int N = r(rls, 100);
-  cout << "Вы ввели правила:  " << endl;
-  for (int i = 0; i < N; i++)
-    cout << rls[i].fp << " " << rls[i].es << " " << rls[i].ns << " "
-         << rls[i].mv << " " << rls[i].np << endl;
+  r(rls, 100);
+  string_processing(str, rls);
   return 0;
 }
