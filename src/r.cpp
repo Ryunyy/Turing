@@ -1,5 +1,4 @@
 #include "incl.h"
-#include "st.h"
 
 int r(vector<struct st> &rls, int N) {
   int j;
