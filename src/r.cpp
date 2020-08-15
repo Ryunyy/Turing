@@ -6,6 +6,7 @@ int r(vector<struct st> &rls, int N) {
   setlocale(LC_ALL, "RUS");
   cout << endl
        << "Введите правила обработки. Для завершения ввода введите 'stop':    "
+       << endl
        << endl;
   for (j = 0; j < N; j++) {
     cin >> q;
@@ -13,6 +14,7 @@ int r(vector<struct st> &rls, int N) {
       rls[j].fp = q;
     else {
       N = j;
+      cout << endl;
       break;
     }
     cin >> rls[j].es;
