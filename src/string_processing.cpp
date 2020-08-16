@@ -8,7 +8,7 @@ void string_processing(string &str, vector<st> &rls) {
   int i = 0, point = 0;
   string that_position = rls[0].fp;
   while (that_position != "halt") {
-    if (that_posinion == rls[i].fp && str[point] == rls[i].es) {
+    if (that_position == rls[i].fp && str[point] == rls[i].es) {
       cout << replacement(rls, str, i, point) << endl;
       pointer(point);
       point = move(point, rls, i);
