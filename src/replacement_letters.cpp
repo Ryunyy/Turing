@@ -1,8 +1,8 @@
 #include "incl.h"
 
-string replacement(st s, string &str, int point) {
-  if (s.ns != '*') {
-    str[point] = s.ns;
+string replacement(st rule, string &str, int point) {
+  if (rule.ns != '*') {
+    str[point] = rule.ns;
   } else {
     str[point] = str[point];
   }
