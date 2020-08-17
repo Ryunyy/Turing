@@ -1,11 +1,11 @@
 #include "incl.h"
 
-int move(int point, vector<st> &rls, int i) {
-  if (rls[i].mv == 'r')
+int move(int point, st rule) {
+  if (rule.mv == 'r')
     point++;
-  if (rls[i].mv == 'l')
+  if (rule.mv == 'l')
     point--;
-  if (rls[i].mv == 'n')
+  if (rule.mv == 'n')
     point = point;
   return point;
 }
