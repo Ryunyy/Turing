@@ -17,7 +17,7 @@ void string_processing(string &str, vector<st> &rls) {
       if(j){
         j = 0;
       } else {
-        cout << "rules for '" << str[point] << "' is not exist in " << that_position << " statement" <<  endl;
+        cout << endl << "rules for '" << str[point] << "' is not exist in " << that_position << " statement" <<  endl;
         break;
       }
     if (that_position == rls[i].fp && str[point] == rls[i].es) {

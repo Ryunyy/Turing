@@ -6,7 +6,7 @@ void pointer(int point, string str) {
            cout << "[" << str[point] << "]";
            i++;
        }
-       cout << str[i];
+       cout << " " << str[i] << " ";
        
    }
    cout << endl;
