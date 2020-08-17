@@ -8,9 +8,9 @@
 #include <vector>
 using namespace std;
 struct st {
-    string fp;
-    char es;
-    char ns;
-    char mv;
-    string np;
+  string fp;
+  string es;
+  string ns;
+  string mv;
+  string np;
 };
