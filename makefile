@@ -6,7 +6,7 @@ s = src
 
 all: clean1 folders $(bi)/main
 
-$(bi)/main: $(bu)/main.o $(bu)/inst.o $(bu)/r.o $(bu)/s.o $(bu)/string_processing.o $(bu)/replacement_letters.o $(bu)/move.o $(bu)/pointer.o $(bu)/r-inspection.o
+$(bi)/main: $(bu)/main.o $(bu)/inst.o $(bu)/r.o $(bu)/s.o $(bu)/string_processing.o $(bu)/replacement_letters.o $(bu)/move.o $(bu)/pointer.o $(bu)/r-inspection.o $(bu)/check_row.o
 	$(flags) $^ -o $@
 
 $(bu)/main.o: $(s)/main.cpp $(s)/incl.h
@@ -34,6 +34,9 @@ $(bu)/pointer.o: $(s)/pointer.cpp $(s)/incl.h
 	$(flags) -c $< -o $@
 
 $(bu)/r-inspection.o: $(s)/r-inspection.cpp $(s)/incl.h
+	$(flags) -c $< -o $@
+
+$(bu)/check_row.o: $(s)/check_row.cpp $(s)/incl.h
 	$(flags) -c $< -o $@
 
 folders:
