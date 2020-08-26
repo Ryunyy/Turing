@@ -6,4 +6,5 @@ bool check_row(string &row) {
             return 0;
         }
     }
+    return 1;
 }
