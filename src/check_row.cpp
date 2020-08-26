@@ -2,7 +2,7 @@
 
 bool check_row(string &row) {
     for(char ch : row) {
-        if (ch == "*") {
+        if (ch == '*') {
             return 1;
         }
     }
