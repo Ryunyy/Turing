@@ -11,5 +11,8 @@ bool check_rules(vector<st> &rule) {
         if(i.es.length() > 1) {
             return 0;
         }
+        if(i.ns.length() > 1) {
+            return 0;
+        }
     }
 }
