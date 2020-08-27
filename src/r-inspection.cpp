@@ -1,6 +1,6 @@
 #include "incl.h"
 
-bool r_insp(vector<struct st> &rls,int N) {
+bool r_insp(vector<struct st> &rls, int N) {
   int i = 0;
   int j = 0;
   while ((rls[i].fp != "q1") && (i < N))
@@ -51,18 +51,19 @@ bool r_insp(vector<struct st> &rls,int N) {
       return 1;
     }
   }
-  for(i = 0; i < N - 1; i++) {
-    for(j = i + 1; j < N; j++) {
-      if(rls[i].fp == rls[j].fp && rls[i].es == rls[j].es) {
+  for (i = 0; i < N - 1; i++) {
+    for (j = i + 1; j < N; j++) {
+      if (rls[i].fp == rls[j].fp && rls[i].es == rls[j].es) {
         cout << endl
              << "Ошибка в строках " << i + 1 << " и " << j + 1
-             << " программа не знает что делать с '" << rls[i].es << "' Введите правила корректно!" << endl;
-             cout << i + 1 << ". " << rls[i].fp << " " << rls[i].es << " " << rls[i].ns
-           << " " << rls[i].mv << " " << rls[i].np << endl
-           << endl;
-           cout << j + 1 << ". " << rls[j].fp << " " << rls[j].es << " " << rls[j].ns
-           << " " << rls[j].mv << " " << rls[j].np << endl
-           << endl;
+             << " программа не знает что делать с '" << rls[i].es
+             << "' Введите правила корректно!" << endl;
+        cout << i + 1 << ". " << rls[i].fp << " " << rls[i].es << " "
+             << rls[i].ns << " " << rls[i].mv << " " << rls[i].np << endl
+             << endl;
+        cout << j + 1 << ". " << rls[j].fp << " " << rls[j].es << " "
+             << rls[j].ns << " " << rls[j].mv << " " << rls[j].np << endl
+             << endl;
         return 1;
       }
     }

@@ -1,7 +1,7 @@
 #include "incl.h"
 extern bool r_insp(vector<struct st> &rls, int N);
 
-int r(vector<struct st> &rls,int N) {
+int r(vector<struct st> &rls, int N) {
   int j, k = N;
   string q = "";
   setlocale(LC_ALL, "RUS");
