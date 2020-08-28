@@ -15,7 +15,7 @@ TEST_CASE() {
     rules[0].fp = "q1";
     rules[0].es = "1";
     rules[0].ns = "0";
-    rules[0].mv = "r"
-    rules[0].np = "halt"
+    rules[0].mv = "r";
+    rules[0].np = "halt";
     REQUIRE(move(0, rules, 0) == 1);
 }
