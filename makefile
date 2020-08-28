@@ -48,6 +48,12 @@ $(bu)/turing_test.o: $(t)/turing_test.cpp $(t)/incl_test.o
 $(bu)/move_test.o: $(t)/move_test.cpp $(t)/incl_test.h
 	$(flags) -I $(t)/catch -c $< -o $@
 
+run-app:$(bi)/main
+	$(bi)/main
+
+run-test:$(bi)/turing_test
+	$(bi)/turing_test
+
 folders:
 	mkdir -p $(bi)
 	mkdir -p $(bu)
