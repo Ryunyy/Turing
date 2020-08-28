@@ -1,4 +1,4 @@
-flags = g++ -std=c++11 -Wall -Werror -MP -MMD
+flags = g++ -std=c++14 -Wall -Werror -MP -MMD
 bi = bin
 bu = build
 t = test

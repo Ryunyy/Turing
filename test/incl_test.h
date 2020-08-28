@@ -1,11 +1,5 @@
 #pragma once
-#include <array>
-#include <clocale>
-#include <cstdio>
-#include <cstdlib>
-#include <iostream>
-#include <string>
-#include <vector>
+#include <bits/stdc++.h>
 #include "catch.hpp"
 using namespace std;
 struct st {
