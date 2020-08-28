@@ -39,10 +39,10 @@ $(bu)/r-inspection.o: $(s)/r-inspection.cpp $(s)/incl.h
 $(bu)/check_row.o: $(s)/check_row.cpp $(s)/incl.h
 	$(flags) -c $< -o $@
 
-$(bi)/turing_test: $(t)/move_test.o $(t)/turing_test.o
+$(bi)/turing_test: $(bu)/move_test.o $(bu)/turing_test.o
 	$(flags) $^ -o $@
 
-$(bu)/turing_test.o: $(t)/turing_test.cpp $(t)/incl_test.o
+$(bu)/turing_test.o: $(t)/turing_test.cpp $(t)/incl_test.h
 	$(flags) -I $(t)/catch -c $< -o $@
 
 $(bu)/move_test.o: $(t)/move_test.cpp $(t)/incl_test.h
