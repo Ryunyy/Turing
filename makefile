@@ -39,13 +39,19 @@ $(bu)/r-inspection.o: $(s)/r-inspection.cpp $(s)/incl.h
 $(bu)/check_row.o: $(s)/check_row.cpp $(s)/incl.h
 	$(flags) -c $< -o $@
 
-$(bi)/turing_test: $(bu)/move_test.o $(bu)/turing_test.o
+$(bi)/turing_test: $(bu)/move_test.o $(bu)/turing_test.o $(bu)/check_row_test.o $(bu)/replacement_letters_test.o
 	$(flags) $^ -o $@
 
 $(bu)/turing_test.o: $(t)/turing_test.cpp $(t)/incl_test.h
 	$(flags) -I $(t)/catch -c $< -o $@
 
 $(bu)/move_test.o: $(t)/move_test.cpp $(t)/incl_test.h
+	$(flags) -I $(t)/catch -c $< -o $@
+
+$(bu)/check_row_test.o: $(t)/check_row_test.cpp $(t)/incl_test.h
+	$(flags) -I $(t)/catch -c $< -o $@
+
+$(bu)/replacement_letters_test.o: $(t)/replacement_letters_test.cpp $(t)/incl_test.h
 	$(flags) -I $(t)/catch -c $< -o $@
 
 run-app:$(bi)/main
