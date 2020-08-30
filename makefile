@@ -39,7 +39,7 @@ $(bu)/r-inspection.o: $(s)/r-inspection.cpp $(s)/incl.h
 $(bu)/check_row.o: $(s)/check_row.cpp $(s)/incl.h
 	$(flags) -c $< -o $@
 
-$(bi)/turing_test: $(bu)/move_test.o $(bu)/turing_test.o $(bu)/check_row_test.o $(bu)/replacement_letters_test.cpp
+$(bi)/turing_test: $(bu)/move_test.o $(bu)/turing_test.o $(bu)/check_row_test.o $(bu)/replacement_letters_test.o
 	$(flags) $^ -o $@
 
 $(bu)/turing_test.o: $(t)/turing_test.cpp $(t)/incl_test.h
