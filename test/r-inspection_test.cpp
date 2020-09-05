@@ -2,17 +2,22 @@
 bool r_insp(vector<struct st> &rls, int N) {
   int i = 0;
   int j = 0;
-  while ((rls[i].fp != "q1") && (i < N))
-    i++;
-  if (i == N) {
-    cout << endl
-         << "Нет положения 'q1'! Пожалуйста, введите правила корректно!" << endl
-         << endl;
-    return 1;
+
+  for (i = 0; i < N; i++) {
+    if (rls[i].fp != "q1")
+      continue;
+    if (i == N) {
+      cout << endl
+           << "Нет положения 'q1'! Пожалуйста, введите правила корректно!"
+           << endl
+           << endl;
+      return 1;
+    }
   }
-  i = 0;
-  while ((rls[i].np != "halt") && (i < N)) {
-    i++;
+
+  for (i = 0; i < N; i++) {
+    if (rls[i].np != "halt")
+      continue;
     if (i == N) {
       cout << endl
            << "Нет положения 'halt'! Пожалуйста, введите правила "
@@ -22,12 +27,19 @@ bool r_insp(vector<struct st> &rls, int N) {
       return 1;
     }
   }
+
   for (i = 0; i < N; i++) {
-    if (rls[i].np == "halt")
+    if ((rls[i].np == "halt") && (i != (N - 1)))
       i++;
-    while ((rls[j].fp != rls[i].np) && (j < N))
-      j++;
-    if ((j == N) && (rls[j - 1].fp != rls[i].np) && (i < N)) {
+    else
+      break;
+    for (j = 0; j < N; j++) {
+      if (rls[i].np != rls[j].fp)
+        continue;
+      else
+        break;
+    }
+    if (j == N) {
       cout << endl
            << "Нет положения '" << rls[i].np
            << "'! Пожалуйста, введите правила "
@@ -37,6 +49,7 @@ bool r_insp(vector<struct st> &rls, int N) {
       return 1;
     }
   }
+
   for (i = 0; i < N; i++) {
     if ((rls[i].es.length() > 1) || (rls[i].ns.length() > 1)) {
       cout << endl
@@ -50,6 +63,7 @@ bool r_insp(vector<struct st> &rls, int N) {
       return 1;
     }
   }
+
   for (i = 0; i < N - 1; i++) {
     for (j = i + 1; j < N; j++) {
       if (rls[i].fp == rls[j].fp && rls[i].es == rls[j].es) {
@@ -67,6 +81,7 @@ bool r_insp(vector<struct st> &rls, int N) {
       }
     }
   }
+
   for (i = 0; i < N; i++) {
     if ((rls[i].mv != "l") && (rls[i].mv != "r") && (rls[i].mv != "n")) {
       cout << endl
@@ -84,28 +99,61 @@ bool r_insp(vector<struct st> &rls, int N) {
   return 0;
 }
 TEST_CASE() {
-  std::vector<st> rls;
-  rls.resize(1);
+  vector<struct st> rls(3);
   rls[0].fp = "q2";
   rls[0].es = "12";
   rls[0].ns = "21";
-  rls[0].mv = "sm";
+  rls[0].mv = "st";
   rls[0].np = "q3";
 
+  rls[1].fp = "q4";
+  rls[1].es = "12";
+  rls[1].ns = "21";
+  rls[1].mv = "st";
+  rls[1].np = "q3";
+
+  rls[2].fp = "q3";
+  rls[2].es = "2";
+  rls[2].ns = "2";
+  rls[2].mv = "st";
+  rls[2].np = "q5";
+
   // for "q1"
-  REQUIRE(r_insp(rls, 1) == true);
+  REQUIRE(r_insp(rls, 3) == true);
   rls[0].fp = "q1";
+
   // for "halt"
-  REQUIRE(r_insp(rls, 1) == true);
-  rls[0].np = "halt";
+  REQUIRE(r_insp(rls, 3) == true);
+  rls[2].np = "halt";
+  rls[2].fp = "q2";
+
+  // logical refer
+  REQUIRE(r_insp(rls, 3) == true);
+  rls[1].fp = "q3";
+  rls[2].fp = "q3";
+
   // for length
-  REQUIRE(r_insp(rls, 1) == true);
+  REQUIRE(r_insp(rls, 3) == true);
   rls[0].es = "1";
-  REQUIRE(r_insp(rls, 1) == true);
+  REQUIRE(r_insp(rls, 3) == true);
   rls[0].ns = "2";
+  REQUIRE(r_insp(rls, 3) == true);
+  rls[1].ns = "2";
+  REQUIRE(r_insp(rls, 3) == true);
+  rls[1].es = "2";
+
+  // duplicate
+  REQUIRE(r_insp(rls, 3) == true);
+  rls[2].fp = "q2";
+
   // for move
-  REQUIRE(r_insp(rls, 1) == true);
+  REQUIRE(r_insp(rls, 3) == true);
   rls[0].mv = "r";
+  REQUIRE(r_insp(rls, 3) == true);
+  rls[1].mv = "l";
+  REQUIRE(r_insp(rls, 3) == true);
+  rls[2].mv = "n";
+
   // all done
-  REQUIRE(r_insp(rls, 1) == false);
+  REQUIRE(r_insp(rls, 3) == false);
 }
