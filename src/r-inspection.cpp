@@ -3,17 +3,22 @@
 bool r_insp(vector<struct st> &rls, int N) {
   int i = 0;
   int j = 0;
-  while ((rls[i].fp != "q1") && (i < N))
-    i++;
-  if (i == N) {
-    cout << endl
-         << "Нет положения 'q1'! Пожалуйста, введите правила корректно!" << endl
-         << endl;
-    return 1;
+
+  for (i = 0; i < N; i++) {
+    if (rls[i].fp != "q1")
+      continue;
+    if (i == N) {
+      cout << endl
+           << "Нет положения 'q1'! Пожалуйста, введите правила корректно!"
+           << endl
+           << endl;
+      return 1;
+    }
   }
-  i = 0;
-  while ((rls[i].np != "halt") && (i < N)) {
-    i++;
+
+  for (i = 0; i < N; i++) {
+    if (rls[i].np != "halt")
+      continue;
     if (i == N) {
       cout << endl
            << "Нет положения 'halt'! Пожалуйста, введите правила "
@@ -23,12 +28,19 @@ bool r_insp(vector<struct st> &rls, int N) {
       return 1;
     }
   }
+
   for (i = 0; i < N; i++) {
-    if (rls[i].np == "halt")
+    if ((rls[i].np == "halt") && (i != (N - 1)))
       i++;
-    while ((rls[j].fp != rls[i].np) && (j < N))
-      j++;
-    if ((j == N) && (rls[j - 1].fp != rls[i].np) && (i < N)) {
+    else
+      break;
+    for (j = 0; j < N; j++) {
+      if (rls[i].np != rls[j].fp)
+        continue;
+      else
+        break;
+    }
+    if (j == N) {
       cout << endl
            << "Нет положения '" << rls[i].np
            << "'! Пожалуйста, введите правила "
@@ -38,6 +50,7 @@ bool r_insp(vector<struct st> &rls, int N) {
       return 1;
     }
   }
+
   for (i = 0; i < N; i++) {
     if ((rls[i].es.length() > 1) || (rls[i].ns.length() > 1)) {
       cout << endl
@@ -51,6 +64,7 @@ bool r_insp(vector<struct st> &rls, int N) {
       return 1;
     }
   }
+
   for (i = 0; i < N - 1; i++) {
     for (j = i + 1; j < N; j++) {
       if (rls[i].fp == rls[j].fp && rls[i].es == rls[j].es) {
@@ -68,6 +82,7 @@ bool r_insp(vector<struct st> &rls, int N) {
       }
     }
   }
+
   for (i = 0; i < N; i++) {
     if ((rls[i].mv != "l") && (rls[i].mv != "r") && (rls[i].mv != "n")) {
       cout << endl
