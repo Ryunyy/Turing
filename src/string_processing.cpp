@@ -5,6 +5,7 @@ extern int move(int point, st rule);
 extern void pointer(int point, string str);
 
 void string_processing(string &str, vector<st> &rls) {
+  setlocale(LC_ALL, "RUS");
   int point = 0;
   string that_position = rls[0].fp;
   while (that_position != "halt") {
@@ -36,8 +37,8 @@ void string_processing(string &str, vector<st> &rls) {
       }
     } else {
       cout << endl
-           << "rules for '" << str[point] << "' is not exist in "
-           << that_position << " statement" << endl;
+           << "Правил для '" << str[point] << "' не существует при положении "
+           << that_position << endl;
       break;
     }
   }
