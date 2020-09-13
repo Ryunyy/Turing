@@ -6,47 +6,53 @@ bool r_insp(vector<struct st> &rls, int N) {
   for (i = 0; i < N; i++) {
     if (rls[i].fp != "q1")
       continue;
-    if (i == N) {
-      cout << endl
-           << "Нет положения 'q1'! Пожалуйста, введите правила корректно!"
-           << endl
-           << endl;
-      return 1;
-    }
+    else
+      break;
+  }
+  if (i == N) {
+    cout << endl
+         << "Нет положения 'q1'! Пожалуйста, введите правила корректно!" << endl
+         << endl;
+    return 1;
   }
 
   for (i = 0; i < N; i++) {
     if (rls[i].np != "halt")
       continue;
-    if (i == N) {
-      cout << endl
-           << "Нет положения 'halt'! Пожалуйста, введите правила "
-              "корректно!"
-           << endl
-           << endl;
-      return 1;
-    }
+    else
+      break;
+  }
+  if (i == N) {
+    cout << endl
+         << "Нет положения 'halt'! Пожалуйста, введите правила "
+            "корректно!"
+         << endl
+         << endl;
+    return 1;
   }
 
   for (i = 0; i < N; i++) {
-    if ((rls[i].np == "halt") && (i != (N - 1)))
-      i++;
-    else
-      break;
-    for (j = 0; j < N; j++) {
-      if (rls[i].np != rls[j].fp)
-        continue;
-      else
+    if (rls[i].np == "halt") {
+      if (i == (N - 1))
         break;
-    }
-    if (j == N) {
-      cout << endl
-           << "Нет положения '" << rls[i].np
-           << "'! Пожалуйста, введите правила "
-              "корректно!"
-           << endl
-           << endl;
-      return 1;
+      else
+        i++;
+    } else {
+      for (j = 0; j < N; j++) {
+        if (rls[i].np == rls[j].fp)
+          break;
+        else
+          continue;
+      }
+      if (j == N) {
+        cout << endl
+             << "Нет положения '" << rls[i].np
+             << "'! Пожалуйста, введите правила "
+                "корректно!"
+             << endl
+             << endl;
+        return 1;
+      }
     }
   }
 
@@ -98,6 +104,7 @@ bool r_insp(vector<struct st> &rls, int N) {
   }
   return 0;
 }
+
 TEST_CASE() {
   vector<struct st> rls(3);
   rls[0].fp = "q2";
