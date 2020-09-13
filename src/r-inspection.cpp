@@ -73,7 +73,7 @@ bool r_insp(vector<struct st> &rls, int N) {
 
   for (i = 0; i < N - 1; i++) {
     for (j = i + 1; j < N; j++) {
-      if (rls[i].fp == rls[j].fp && rls[i].es == rls[j].es) {
+      if ((rls[i].fp == rls[j].fp) && (rls[i].es == rls[j].es)) {
         cout << endl
              << "Ошибка в строках " << i + 1 << " и " << j + 1
              << " программа не знает что делать с '" << rls[i].es
